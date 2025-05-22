@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <!-- Camps que de la vista en llista -->
+    <record model="ir.ui.view" id="articles.list">
+      <field name="name">articles list</field>
+      <field name="model">articles.articles</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="id_article"/>
+          <field name="nom_article"/>
+          <field name="preu_total"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="articles.action_window">
+      <field name="name">Vista de llista</field>
+      <field name="res_model">articles.articles</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu Arrel -->
+    <menuitem name="Articles" id="articles.menu_root"/>
+
+    <!-- Item del menu per canviar de vista  -->
+    <menuitem
+            name="Canviar vista"
+            id="canvi_vista"
+            parent="articles.menu_root"
+            action="articles.action_window"
+    />
+
+  </data>
+</odoo>

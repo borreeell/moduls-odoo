@@ -1,0 +1,10 @@
+<!-- reports/report_factura.xml -->
+<odoo>
+    <record id="action_report_factura" model="ir.actions.report">
+        <field name="model">factures.factures</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="name">factures.report_factura</field>
+        <field name="report_name">factures.report_factura</field>
+        <field name="print_report_name">'Factura - %s' % (object.name)</field>
+    </record>
+</odoo>

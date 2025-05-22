@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_articles_factura,factures.articles_factura,model_factures_articles_factura,base.group_user,1,1,1,1
+access_factures_factures,factures.factures,model_factures_factures,base.group_user,1,1,1,1

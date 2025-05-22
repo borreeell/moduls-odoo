@@ -1,0 +1,41 @@
+<odoo>
+    <template id="report_factura" name="Factura Report">
+        <t t-call="web.external_layout">
+            <main class="main">
+                <t t-foreach="docs" t-as="factura">
+                    <div class="page">
+                        <h2>Factura Nº: <t t-esc="factura.name"/></h2>
+                        <p>Data: <t t-esc="factura.data_creacio_factura"/></p>
+                        <p>Client: <t t-esc="factura.id_client.nom_client"/></p>
+                        <p>Data venciment: <t t-esc="factura.data_venciment"/></p>
+
+                        <table class="table table-sm mt32">
+                            <thead>
+                                <tr>
+                                    <th>Nom article</th>
+                                    <th>Quantitat</th>
+                                    <th>Preu unitari</th>
+                                    <th>Subtotal</th>
+                                    <th>IVA (%)</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="factura.articles_factura" t-as="linea">
+                                    <tr>
+                                        <td><t t-esc="linea.nom_article"/></td>
+                                        <td><t t-esc="linea.quantitat"/></td>
+                                        <td><t t-esc="linea.preu_unitari"/></td>
+                                        <td><t t-esc="linea.preu_subtotal"/></td>
+                                        <td><t t-esc="linea.percentatge_iva"/></td>
+                                        <td><t t-esc="linea.preu_total"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </main>
+        </t>
+    </template>
+</odoo>

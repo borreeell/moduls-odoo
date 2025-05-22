@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- Definicio de la vista de llista per al model -->
+    <record model="ir.ui.view" id="gestio_clients.list"> 
+      <field name="name">gestio_clients list</field>  <!-- Nom de la vista -->
+      <field name="model">gestio_clients.gestio_clients</field> <!-- Nom del model pel qual definim la vista -->
+      <field name="arch" type="xml"> <!-- Tipus de vista -->
+        <list>
+          <!-- Camps a mostrar -->
+          <field name="id_client"/> 
+          <field name="nom_client"/>
+          <field name="telefon"/>
+          <field name="mail"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Defincio de l'accio de finestra per el model -->
+    <record model="ir.actions.act_window" id="gestio_clients.action_window"> 
+      <field name="name">Vista de llista</field> <!-- Nom de l'accio -->
+      <field name="res_model">gestio_clients.gestio_clients</field> <!-- Model al qual s'aplica l'accio -->
+      <field name="view_mode">list,form</field> <!-- Modes de vista -->
+    </record>
+
+
+    <!-- Definicio del menu principal -->
+    <menuitem name="Clients" id="gestio_clients.menu_root"/>
+
+    <!-- Definicio dels submenus -->
+    <menuitem
+            name="Vista de llista"
+            id="gestio_clients.menu_1"
+            parent="gestio_clients.menu_root"
+            action="gestio_clients.action_window"
+    />
+  </data>
+</odoo>
+

@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    <!-- Vista form per el modul -->
+    <record id="view_factures_form" model="ir.ui.view">
+      <field name="name">factures.form</field>
+      <field name="model">factures.factures</field>
+      <field name="arch" type="xml">
+        <form string="Factures">
+          <header>
+            <button name="%(action_report_factura)d" string="Imprimir Factura" type="action" class="btn-primary"/>
+          </header>
+          <sheet>
+            <group>
+              <!-- Camps formulari -->
+              <field name="name"/>
+              <field name="id_client"/>
+              <field name="data_creacio_factura"/>
+            </group>
+            <group>
+              <!-- Llistat d'articles dins del formulari -->
+              <field name="articles_factura">
+                <list>
+                  <field name="id_article"/>
+                  <field name="nom_article"/>
+                  <field name="quantitat"/>
+                  <field name="preu_unitari"/>
+                  <field name="preu_subtotal"/>
+                  <field name="percentatge_iva"/>
+                  <field name="preu_total"/>
+                </list>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definicio de la vista de llista del modul -->
+    <record model="ir.ui.view" id="factures.list">
+      <field name="name">factures.list</field>
+      <field name="model">factures.factures</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="id_client"/>
+          <field name="data_creacio_factura"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Accio de finestra per la vista de form i la llista -->
+    <record model="ir.actions.act_window" id="factures.action_window">
+      <field name="name">Vista de llista</field>
+      <field name="res_model">factures.factures</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Factures" id="factures.menu_root"/>
+
+    <!-- actions -->
+    <menuitem
+      name="Canvi de vista"
+      id="factures.menu_list"
+      parent="factures.menu_root"
+      action="factures.action_window"
+    />
+  </data>
+</odoo>

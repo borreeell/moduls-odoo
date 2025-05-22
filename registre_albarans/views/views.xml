@@ -1,0 +1,72 @@
+<odoo>
+  <data>
+    <!-- Definicio de la vista formulari per el modul -->
+    <record id="view_albarans_form" model="ir.ui.view">
+      <field name="name">registre_albarans.form</field>
+      <field name="model">registre_albarans.registre_albarans</field>
+      <field name="arch" type="xml">
+        <form string="Albarans">
+          <sheet>
+            <group>
+              <!-- Camps del formulari -->
+              <field name="name"/>
+              <field name="id_client"/>
+              <field name="data"/>
+            </group>
+            <group>
+              <!-- Llistat d'articles dins del formulari -->
+              <field name="articles_albara">
+                <list>
+                  <field name="id_article"/>
+                  <field name="nom_article"/>
+                  <field name="quantitat"/>
+                  <field name="preu_unitari"/>
+                  <field name="preu_subtotal"/>
+                  <field name="percentatge_iva"/>
+                  <field name="preu_total"/>
+                </list>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definicio de la vista llista per el modul -->
+    <record id="view_albarans_list" model="ir.ui.view">
+      <field name="name">registre_albarans.list</field>
+      <field name="model">registre_albarans.registre_albarans</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="id_client"/>
+          <field name="data"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Defincio de l'accio de finestra per les vistes de formulari i llista -->
+    <record id="action_window" model="ir.actions.act_window">
+      <field name="name">Vista de llista</field>
+      <field name="res_model">registre_albarans.registre_albarans</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Elements del menu -->
+    <menuitem name="Albarans" id="registre_albarans.menu_root"/>
+
+    <menuitem 
+      name="registre_albarans" 
+      id="menu_registre_albarans" 
+      parent="registre_albarans.menu_root"
+    />
+
+    <menuitem name="Menu 1" id="menu_1" parent="menu_registre_albarans"/>
+    <menuitem 
+      name="List" 
+      id="menu_1_list" 
+      parent="menu_1" 
+      action="registre_albarans.action_window"
+    />
+  </data>
+</odoo>
