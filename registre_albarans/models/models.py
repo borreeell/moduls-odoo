@@ -6,22 +6,11 @@ class DadesAlbara(models.Model):
     _name = 'registre_albarans.registre_albarans'
     _description = 'Albarans'
 
-    name = fields.Char(
-        string="Nº d'albara:",
-        required=False,
-        copy=False,
-        readonly=True,
-    )
+    name = fields.Char(string="Nº d'albara:")
 
-    id_client = fields.Many2one(
-        'gestio_clients.gestio_clients',
-        string="ID del client",
-    )
+    id_client = fields.Many2one('gestio_clients.gestio_clients', string="ID del client")
 
-    data = fields.Date(
-        string="Data albara",
-        default=fields.Date.context_today,
-    )
+    data = fields.Date(string="Data albara", default=fields.Date.context_today)
 
     articles_albara = fields.One2many(
         'registre_albarans.articles_albara', 
